@@ -1,0 +1,12 @@
+# NOTE: If you're using .devcontainer/docker-compose.yml then this won't be necessary
+
+services:
+  app:
+    build: .
+    image: &project_name my-cool-gem # TODO: CHANGE THIS TO YOUR GEM NAME
+    container_name: *project_name
+    env_file: .env
+    volumes:
+       - .:/app
+       - /app/pkg # don't mount the pkg directory, it will be created by the build
+    command: ["tail", "-f", "/dev/null"]
