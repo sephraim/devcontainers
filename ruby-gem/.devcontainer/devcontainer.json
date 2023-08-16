@@ -45,15 +45,16 @@
       "vscode": {
         // Automatically install Ruby + Rails extensions in the container
         "extensions": [
-          "kaiwood.endwise",                       // Endwise
-          "bung87.vscode-gemfile", 			           // Gemfile syntax highlighting
+          "kaiwood.endwise",                       // Endwise - auto insert 'end' for Ruby blocks
+          "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
           "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
-          "rebornix.ruby", 						             // Ruby syntax highlighting
-          "wingrunr21.vscode-ruby", 			         // Ruby syntax highlighting
-          "bung87.rails", 						             // Rails syntax highlighting
-          "jemmyw.rails-fast-nav", 				         // Rails fast navigation
-          "sianglim.slim", 					               // Slim syntax highlighting
-          "castwide.solargraph" 					         // Solargraph - Ruby language server + IntelliSense
+          "KoichiSasada.vscode-rdbg",              // Ruby debugger via the 'debug' gem
+          "rebornix.ruby",                         // Ruby syntax highlighting
+          "wingrunr21.vscode-ruby",                // Ruby syntax highlighting
+          "bung87.rails",                          // Rails syntax highlighting
+          "jemmyw.rails-fast-nav",                 // Rails fast navigation
+          "sianglim.slim",                         // Slim syntax highlighting
+          "castwide.solargraph"                    // Solargraph - IntelliSense via the 'solargraph' gem
         ]
       }
     }

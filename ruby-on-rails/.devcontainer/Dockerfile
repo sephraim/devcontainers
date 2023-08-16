@@ -21,7 +21,8 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle update --bundler && bundle install
 
 # Install development gems for debugging/documentation
-RUN gem install debug solargraph
+# TODO: Add the following development gems to your Gemfile if you can, then remove this RUN command
+RUN gem install debug solargraph-rails
 
 # STAGE 3: Copy gems & project files and build gem executable
 FROM base as final

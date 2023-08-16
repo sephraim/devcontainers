@@ -22,6 +22,7 @@ COPY lib/path/to/version.rb lib/path/to/version.rb
 RUN bundle update --bundler && bundle install
 
 # Install development gems for debugging/documentation
+# TODO: Add the following development gems to your Gemfile if you can, then remove this RUN command
 RUN gem install debug solargraph
 
 # STAGE 3: Copy gems & project files and build gem executable
