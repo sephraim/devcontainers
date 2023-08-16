@@ -1,0 +1,19 @@
+# NOTE This will take precedence over docker-compose.yml in the project root
+
+services:
+  # Update this to the name of the service you want to work with in your docker-compose.yml file
+  web:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    image: &project_name my-cool-app # TODO: CHANGE THIS TO YOUR APP NAME
+    container_name: *project_name
+    env_file: ../.env
+    environment:
+      - SOLARGRAPH_GLOBAL_CONFIG=/root/.config/solargraph/config.yml
+      - SOLARGRAPH_CACHE=/root/.cache/solargraph
+    volumes:
+       - ..:/app
+       - ${HOME}/.config:/root/.config # mount local config, specifically for solargraph
+       - ${HOME}/.cache:/root/.cache # mount local cache, specifically for solargraph
+    command: ["tail", "-f", "/dev/null"]

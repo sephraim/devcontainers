@@ -8,7 +8,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
     image: &project_name my-cool-gem # TODO: CHANGE THIS TO YOUR GEM NAME
     container_name: *project_name
-    env_file: .env
+    env_file: ../.env
     environment:
       - SOLARGRAPH_GLOBAL_CONFIG=/root/.config/solargraph/config.yml
       - SOLARGRAPH_CACHE=/root/.cache/solargraph
