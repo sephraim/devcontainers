@@ -48,11 +48,14 @@
         "kaiwood.endwise",                       // Endwise - auto insert 'end' for Ruby blocks
         "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
         "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
-        "KoichiSasada.vscode-rdbg",              // Ruby debugger via the 'debug' gem
+        "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
         "rebornix.ruby",                         // Ruby syntax highlighting
         "wingrunr21.vscode-ruby",                // Ruby syntax highlighting
-        "bung87.rails",                          // Rails syntax highlighting
+        "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
         "jemmyw.rails-fast-nav",                 // Rails fast navigation
+        "Hridoy.rails-snippets",                 // Rails snippets
+        "bung87.rails",                          // Rails syntax highlighting
+        "ldrner.rspec-snippets-vscode",          // RSpec snippets
         "sianglim.slim",                         // Slim syntax highlighting
         "castwide.solargraph"                    // Solargraph - IntelliSense via the 'solargraph' gem
       ]
