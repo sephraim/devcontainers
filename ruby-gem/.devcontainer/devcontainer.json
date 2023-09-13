@@ -43,18 +43,18 @@
     // Configure tool-specific properties.
     "customizations": {
       "vscode": {
-        // Automatically install Ruby + Rails extensions in the container
+        // Automatically install Ruby extensions in the container
         "extensions": [
+          // "Shopify.ruby-extensions-pack",          // Ruby extensions pack from Shopify (requires Ruby 3.0+)
           "kaiwood.endwise",                       // Endwise - auto insert 'end' for Ruby blocks
           "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
           "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
           "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
           "rebornix.ruby",                         // Ruby syntax highlighting
           "wingrunr21.vscode-ruby",                // Ruby syntax highlighting
-          "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
-          "jemmyw.rails-fast-nav",                 // Rails fast navigation
-          "Hridoy.rails-snippets",                 // Rails snippets
-          "bung87.rails",                          // Rails syntax highlighting
+          // "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
+          // "MateuszDrewniak.ruby-test-runner",      // Ruby test runner
+          "Fooo.ruby-spec-runner",                 // Ruby test runner
           "ldrner.rspec-snippets-vscode",          // RSpec snippets
           "sianglim.slim",                         // Slim syntax highlighting
           "castwide.solargraph"                    // Solargraph - IntelliSense via the 'solargraph' gem
