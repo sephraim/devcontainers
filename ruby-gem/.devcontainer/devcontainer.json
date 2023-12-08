@@ -50,8 +50,8 @@
           "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
           "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
           "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
-          "rebornix.ruby",                         // Ruby syntax highlighting
-          "wingrunr21.vscode-ruby",                // Ruby syntax highlighting
+          // "rebornix.ruby",                         // Ruby syntax highlighting (deprecated — use Shopify.ruby-lsp instead)
+          // "wingrunr21.vscode-ruby",                // Ruby syntax highlighting (deprecated — use Shopify.ruby-lsp instead)
           // "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
           // "MateuszDrewniak.ruby-test-runner",      // Ruby test runner
           "Fooo.ruby-spec-runner",                 // Ruby test runner
