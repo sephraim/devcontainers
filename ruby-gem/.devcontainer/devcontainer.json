@@ -1,67 +1,66 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
 {
-    "name": "my-cool-gem", // TODO: CHANGE THIS TO YOUR GEM NAME
+  "name": "my-cool-gem", // TODO: CHANGE THIS TO YOUR GEM NAME
 
-    // Update the 'dockerComposeFile' list if you have more compose files or use different names.
-    // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
-    "dockerComposeFile": [
-      // "../docker-compose.yml"
-      "docker-compose.yml"
-    ],
+  // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+  // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
 
-    // The 'service' property is the name of the service for the container that VS Code should
-    // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
-    "service": "app",
+  // The 'service' property is the name of the service for the container that VS Code should
+  // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+  "service": "app",
 
-    // The optional 'workspaceFolder' property is the path VS Code should open by default when
-    // connected. This is typically a file mount in .devcontainer/docker-compose.yml
-    // "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "workspaceFolder": "/app",
+  // The optional 'workspaceFolder' property is the path VS Code should open by default when
+  // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+  // "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "workspaceFolder": "/app",
 
-    // Features to add to the dev container. More info: https://containers.dev/features.
-    // "features": {},
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
 
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
 
-    // Uncomment the next line if you want start specific services in your Docker Compose config.
-    // "runServices": [],
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
 
-    // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
-    // "shutdownAction": "none",
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
 
-    // Uncomment the next line to run commands (on the host machine) before the container is created.
-    "initializeCommand": "docker compose build",
+  // Uncomment the next line to run commands (on the host machine) before the container is created.
+  "initializeCommand": "docker compose build",
 
-    // Uncomment the next line to run commands when the container is created.
-    // "onCreateCommand": "gem install debug solargraph", // put these gems in your Gemfile if you can
+  // Uncomment the next line to run commands when the container is created.
+  // "onCreateCommand": "gem install debug solargraph", // put these gems in your Gemfile if you can
 
-    // Uncomment the next line to run commands after the container is created.
-    // "postCreateCommand": "cat /etc/os-release",
+  // Uncomment the next line to run commands after the container is created.
+  // "postCreateCommand": "cat /etc/os-release",
 
-    // Configure tool-specific properties.
-    "customizations": {
-      "vscode": {
-        // Automatically install Ruby extensions in the container
-        "extensions": [
-          // "Shopify.ruby-extensions-pack",          // Ruby extensions pack from Shopify (requires Ruby 3.0+)
-          "kaiwood.endwise",                       // Endwise - auto insert 'end' for Ruby blocks
-          "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
-          "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
-          "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
-          // "rebornix.ruby",                         // Ruby syntax highlighting (deprecated — use Shopify.ruby-lsp instead)
-          // "wingrunr21.vscode-ruby",                // Ruby syntax highlighting (deprecated — use Shopify.ruby-lsp instead)
-          // "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
-          // "MateuszDrewniak.ruby-test-runner",      // Ruby test runner
-          "Fooo.ruby-spec-runner",                 // Ruby test runner
-          "ldrner.rspec-snippets-vscode",          // RSpec snippets
-          "sianglim.slim",                         // Slim syntax highlighting
-          "castwide.solargraph"                    // Solargraph - IntelliSense via the 'solargraph' gem
-        ]
-      }
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      // Automatically install Ruby extensions in the container
+      "extensions": [
+        // "Shopify.ruby-extensions-pack",          // Ruby extensions pack from Shopify (requires Ruby 3.0+)
+        "kaiwood.endwise",                       // Endwise - auto insert 'end' for Ruby blocks
+        "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
+        "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
+        "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
+        // "rebornix.ruby",                         // Ruby syntax highlighting (deprecated — use Shopify.ruby-lsp instead)
+        // "wingrunr21.vscode-ruby",                // Ruby syntax highlighting (deprecated — use Shopify.ruby-lsp instead)
+        // "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
+        // "MateuszDrewniak.ruby-test-runner",      // Ruby test runner
+        "Fooo.ruby-spec-runner",                 // Ruby test runner
+        "ldrner.rspec-snippets-vscode",          // RSpec snippets
+        "sianglim.slim",                         // Slim syntax highlighting
+        "castwide.solargraph"                    // Solargraph - IntelliSense via the 'solargraph' gem
+      ]
     }
-
-    // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-    // "remoteUser": "devcontainer"
   }
+
+  // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "devcontainer"
+}

@@ -1,12 +1,5 @@
-# NOTE: If you're using .devcontainer/docker-compose.yml then this won't be necessary
-
-services:
-  app:
-    build: .
-    image: &project_name my-cool-gem # TODO: CHANGE THIS TO YOUR GEM NAME
-    container_name: *project_name
-    env_file: .env
-    volumes:
-       - .:/app
-       - /app/pkg # don't mount the pkg directory, it will be created by the build
-    command: ["tail", "-f", "/dev/null"]
+# NOTE: The "real" docker-compose.yml file is located in the .devcontainer/ directory, but having this
+#       file here makes it easier to run `docker compose ...` commands locally without having to specify
+#       the "-f .devcontainer/docker-compose.yml" flag every time.
+include:
+  - .devcontainer/docker-compose.yml
