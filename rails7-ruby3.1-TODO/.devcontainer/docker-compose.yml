@@ -6,7 +6,7 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-    image: &project_name my-cool-app # TODO: CHANGE THIS TO YOUR APP NAME
+    image: &project_name MY-COOL-APP # TODO: CHANGE THIS TO YOUR APP NAME
     container_name: *project_name
     env_file: ../.env
     environment:

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -u
+
+# Shell into the web service container
+
+docker compose exec web bash

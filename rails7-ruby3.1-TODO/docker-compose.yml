@@ -1,6 +1,6 @@
 volumes:
   postgresql:
-    name: my-cool-app-postgresql # TODO: CHANGE THIS TO YOUR APP NAME
+    name: MY-COOL-APP-postgresql # TODO: CHANGE THIS TO YOUR APP NAME
     external: true
 
 x-restart_policy: &default_restart_policy
@@ -14,11 +14,11 @@ services:
   web:
     << : *default_restart_policy
     build: .
-    image: &project_name my-cool-app # TODO: CHANGE THIS TO YOUR APP NAME
+    image: &project_name MY-COOL-APP # TODO: CHANGE THIS TO YOUR APP NAME
     container_name: *project_name
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.web.rule=Host(`my-cool-app.local`)" # TODO: CHANGE THIS TO YOUR APP NAME
+      - "traefik.http.routers.web.rule=Host(`MY-COOL-APP.local`)" # TODO: CHANGE THIS TO YOUR APP NAME
     env_file: .env
     volumes:
       - .:/app
@@ -43,7 +43,7 @@ services:
 
   db:
     image: postgres:15
-    container_name: my-cool-app-db # TODO: CHANGE THIS TO YOUR APP NAME
+    container_name: MY-COOL-APP-db # TODO: CHANGE THIS TO YOUR APP NAME
     env_file: .env
     volumes:
       - postgresql:/var/lib/postgresql/data

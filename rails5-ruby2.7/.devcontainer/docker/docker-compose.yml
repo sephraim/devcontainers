@@ -1,0 +1,68 @@
+volumes:
+  postgresql:
+    name: MY-COOL-APP-postgresql # TODO: CHANGE THIS TO YOUR APP NAME
+    external: true
+
+x-restart_policy: &default_restart_policy
+  deploy:
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      max_attempts: 3
+
+services:
+  web:
+    << : *default_restart_policy
+    build:
+      context: ../..
+      dockerfile: .devcontainer/docker/Dockerfile
+    image: &project_name MY-COOL-APP # TODO: CHANGE THIS TO YOUR APP NAME
+    container_name: *project_name
+    env_file: ../config/.env
+    environment:
+      - SOLARGRAPH_GLOBAL_CONFIG=/app/.devcontainer/config/solargraph.yml
+      - SOLARGRAPH_CACHE=/root/.cache/solargraph
+    volumes:
+      - ../..:/app
+      - ${HOME}/.cache/solargraph:/root/.cache/solargraph # mount local solargraph cache
+      - ${HOME}/.cache/yard:/usr/local/bundle/doc # mount local yard docs cache
+    ports:
+      - 3000:3000
+    entrypoint: [".devcontainer/docker/entrypoint.sh"]
+    command: ["wait-for-it", "--strict", "--timeout=60", "db:5432", "--", ".devcontainer/docker/run.sh"]
+    depends_on:
+      - db
+
+  delayed_job:
+    << : *default_restart_policy
+    build:
+      context: ../..
+      dockerfile: .devcontainer/docker/Dockerfile
+    image: *project_name
+    container_name: delayed-job
+    env_file: ../config/.env
+    volumes:
+      - ../..:/app
+    entrypoint: [".devcontainer/docker/entrypoint.sh"]
+    command: ["wait-for-it", "--strict", "--timeout=60", "web:3000", "--", "bin/rails", "jobs:work"]
+    depends_on:
+      - db
+      - web
+
+  db:
+    image: postgres:15
+    container_name: MY-COOL-APP-db # TODO: CHANGE THIS TO YOUR APP NAME
+    env_file: ../config/.env
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+      - .:/app
+    ports:
+      - '5432:5432'
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - 8080:8080
+    depends_on:
+      - db

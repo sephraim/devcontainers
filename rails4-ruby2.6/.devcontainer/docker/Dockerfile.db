@@ -1,0 +1,7 @@
+FROM postgres:13
+WORKDIR /app
+
+# Install missing package(s)
+RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
+    postgresql-13-postgis \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

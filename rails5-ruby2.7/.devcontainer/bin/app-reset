@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -u
+
+cat << MESSAGE
+
+WARNING: You are about to reset your Docker environment for this application.
+         Proceed only if you know the consequences, which include destroying
+         this application's local database.
+
+MESSAGE
+
+read -p "Are you sure you wish to continue? If so, type 'yes'. Otherwise hit Enter to quit: "
+
+if [ "$REPLY" != "yes" ]; then
+   echo -e "\nExiting..."
+   exit
+fi
+
+# Reset the server so that dev/app-init can be run again
+
+# Stop remaining service(s) & destroy containers
+docker compose down
+
+# Remove local environment variables file
+# rm .env
+
+# Remove application image
+docker image rm MY-COOL-APP # TODO: CHANGE THIS TO YOUR APP NAME
+
+# Remove database volume / destroy database
+docker volume rm MY-COOL-APP-postgresql # TODO: CHANGE THIS TO YOUR APP NAME
+
+cat << MESSAGE
+
+App reset complete. The following was done:
+- Stopped all services"
+- Removed app image"
+- Removed app database volume"
+- Destroyed database"
+
+To reinitialize the app, run: dev/app-init
+MESSAGE

@@ -1,0 +1,66 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
+{
+  "name": "My Cool App", // TODO: CHANGE THIS TO YOUR APP NAME
+
+  // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+  // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+  "dockerComposeFile": [
+    "docker/docker-compose.yml"
+  ],
+
+  // The 'service' property is the name of the service for the container that VS Code should
+  // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+  "service": "web",
+
+  // The optional 'workspaceFolder' property is the path VS Code should open by default when
+  // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+  // "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "workspaceFolder": "/app",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+
+  // Uncomment the next line to run commands (on the host machine) before the container is created.
+  // "initializeCommand": "docker volume create ruby-gem-docs && docker compose -f .devcontainer/docker/docker-compose.yml build",
+  "initializeCommand": "docker compose -f .devcontainer/docker/docker-compose.yml build",
+
+  // Uncomment the next line to run commands when the container is created.
+  //"onCreateCommand": "",
+
+  // Uncomment the next line to run commands after the container is created.
+  // Generate documentation for all gems to improve Solargraph IntelliSense
+  // NOTE: The first time this runs, it may take awhile. Subsequent runs should be much faster.
+  "postCreateCommand": "yard gems",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      // Automatically install Ruby extensions in the container
+      "extensions": [
+        "kaiwood.endwise",                       // Endwise - auto insert 'end' for Ruby blocks
+        "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
+        "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
+        "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
+        // "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
+        // "MateuszDrewniak.ruby-test-runner",      // Ruby test runner
+        "Fooo.ruby-spec-runner",                 // Ruby test runner
+        "ldrner.rspec-snippets-vscode",          // RSpec snippets
+        "sianglim.slim",                         // Slim syntax highlighting
+        "castwide.solargraph"                    // Solargraph - IntelliSense (requires 'solargraph', 'pygments.rb', 'rubocop', and 'yard' gems)
+      ]
+    }
+  }
+
+  // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "devcontainer"
+}
