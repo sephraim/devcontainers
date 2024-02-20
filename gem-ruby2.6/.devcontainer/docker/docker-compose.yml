@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: .devcontainer/docker/Dockerfile
+    image: &project_name MY-COOL-GEM
+    container_name: *project_name
+    env_file: ../config/.env
+    environment:
+      - SOLARGRAPH_GLOBAL_CONFIG=/app/.devcontainer/config/solargraph.yml
+      - SOLARGRAPH_CACHE=/root/.cache/solargraph
+    volumes:
+      - ../..:/app
+      - ${HOME}/.cache/solargraph:/root/.cache/solargraph # mount local solargraph cache
+      - ${HOME}/.cache/yard:/usr/local/bundle/doc # mount local yard docs cache
