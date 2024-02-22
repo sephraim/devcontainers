@@ -34,10 +34,10 @@ docker volume rm MY-COOL-APP-postgresql # TODO: CHANGE THIS TO YOUR APP NAME
 cat << MESSAGE
 
 App reset complete. The following was done:
-- Stopped all services"
-- Removed app image"
-- Removed app database volume"
-- Destroyed database"
+- Stopped all services
+- Removed app image
+- Removed app database volume
+- Destroyed database
 
 To reinitialize the app, run: dev/app-init
 MESSAGE
