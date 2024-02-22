@@ -26,7 +26,7 @@ services:
       - ../..:/app
       - ${HOME}/.cache/solargraph:/root/.cache/solargraph # mount local solargraph cache
       - ${HOME}/.cache/yard/bundle_docs:/usr/local/bundle/doc # mount local yard docs cache for bundle gems
-      - ${HOME}/.cache/yard/system_docs:/usr/local/lib/ruby/gems/2.7.0/doc # mount local yard docs cache for Ruby 2.7.x system gems
+      - ${HOME}/.cache/yard/stdlib_docs:/usr/local/lib/ruby/gems/2.7.0/doc # mount local yard docs cache for Ruby 2.7.x stdlib gems
     ports:
       - 3000:3000
     entrypoint: [".devcontainer/docker/entrypoint.sh"]
