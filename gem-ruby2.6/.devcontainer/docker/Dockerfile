@@ -18,6 +18,7 @@ RUN gem update --system ${RUBYGEMS_VERSION} \
     && gem install debug \
                    pygments.rb \
                    rubocop \
+                   rubocop-rails \
                    solargraph:${SOLARGRAPH_VERSION} \
                    solargraph-rails
 
