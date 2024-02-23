@@ -8,7 +8,6 @@ services:
     env_file: ../config/.env
     environment:
       - RAILS_ENV=development
-      - RUBOCOP_OPTS="--config /app/.devcontainer/config/.rubocop.yml"
       - SOLARGRAPH_GLOBAL_CONFIG=/app/.devcontainer/config/.solargraph.yml
       - SOLARGRAPH_CACHE=/root/.cache/solargraph
     volumes:

@@ -20,8 +20,6 @@ RUN gem install bundler:${BUNDLER_VERSION} \
     && gem install debug \
                    pygments.rb \
                    rubocop \
-                   rubocop-rails \
-                   rubocop-rspec \
                    solargraph:${SOLARGRAPH_VERSION} \
                    solargraph-rails
 
