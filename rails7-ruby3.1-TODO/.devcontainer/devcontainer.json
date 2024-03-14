@@ -49,6 +49,7 @@
         "kaiwood.endwise",                       // Endwise - auto insert 'end' for Ruby blocks
         "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
         "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
+        "Lourenci.go-to-spec",                   // Go to spec
         "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
         // "rebornix.ruby",                         // Ruby syntax highlighting (deprecated — 'use Shopify.ruby-lsp' instead)
         // "wingrunr21.vscode-ruby",                // Ruby syntax highlighting (deprecated — 'use Shopify.ruby-lsp' instead)
