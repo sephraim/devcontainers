@@ -1,5 +1,5 @@
 # STAGE 1: Initial setup
-FROM ruby:2.7.5
+FROM ruby:2.7.5 as base
 WORKDIR /app
 
 # Use a bundler version that works for both this version of Ruby and (if applicable) the version of Rails being used
