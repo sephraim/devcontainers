@@ -3,7 +3,7 @@ services:
     build:
       context: ../..
       dockerfile: .devcontainer/docker/Dockerfile
-    image: &project_name MY-COOL-GEM
+    image: &project_name my-cool-gem # TODO: CHANGE THIS TO YOUR GEM NAME
     container_name: *project_name
     env_file: ../config/.env
     environment:

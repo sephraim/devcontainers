@@ -25,6 +25,7 @@ RUN gem update --system ${RUBYGEMS_VERSION} \
 # NOTE: Copy *only* the files you absolutely need for this stage, otherwise caching will become useless
 FROM base as gems
 COPY Gemfile Gemfile.lock ../*.gemspec ./
+# TODO: CHANGE path/to/version.rb TO THE ACTUAL PATH OF THE version.rb FILE
 COPY path/to/version.rb path/to/version.rb
 RUN bundle _${BUNDLER_VERSION}_ update --bundler \
     && bundle _${BUNDLER_VERSION}_ install
