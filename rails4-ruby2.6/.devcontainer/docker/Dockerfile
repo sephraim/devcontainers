@@ -14,16 +14,22 @@ ARG SOLARGRAPH_VERSION=0.49.0
 
 # Install missing package(s)
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
+    imagemagick \
     nodejs \
+    postgis \
     postgresql \
     wait-for-it \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Prep for gem installation & install gems used for IntelliSense and debugging
+# NOTE: You can specify solargraph here (Dockerfile) or in your Gemfile but NOT both,
+#       otherwise IntelliSense will not work.
+# NOTE: If the debug breakpoint console is not working, you may need to remove 'debug' from the list below
+#       and put it in your Gemfile instead.
 RUN gem update --system ${RUBYGEMS_VERSION} \
     && gem install bundler:${BUNDLER_VERSION} \
-    && gem install debug \
-                   pygments.rb \
+    && gem install pygments.rb \
+                   debug \
                    rubocop \
                    solargraph:${SOLARGRAPH_VERSION} \
                    solargraph-rails
@@ -43,7 +49,7 @@ FROM base as final
 COPY --from=gems /usr/local/bundle /usr/local/bundle
 
 # Copy main application files
-COPY Gemfile Gemfile.lock Rakefile config.ru  ./
+COPY Gemfile Gemfile.lock Rakefile config.ru ./
 COPY app app
 COPY bin bin
 COPY config config

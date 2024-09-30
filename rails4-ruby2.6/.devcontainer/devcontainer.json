@@ -50,13 +50,18 @@
         "bung87.vscode-gemfile",                 // Gemfile syntax highlighting
         "sevenc-nanashi.gemfile-lock-highlight", // Gemfile.lock syntax highlighting
         "KoichiSasada.vscode-rdbg",              // Ruby debugger (requires 'debug' gem)
-        "Lourenci.go-to-spec",                   // Go to spec
-        // "connorshea.vscode-ruby-test-adapter",   // Ruby test adapter/explorer/runner (requires 'ruby-debug-ide' gem)
-        // "MateuszDrewniak.ruby-test-runner",      // Ruby test runner
         "Fooo.ruby-spec-runner",                 // Ruby test runner
         "ldrner.rspec-snippets-vscode",          // RSpec snippets
         "sianglim.slim",                         // Slim syntax highlighting
-        "castwide.solargraph"                    // Solargraph - IntelliSense (requires 'solargraph', 'pygments.rb', 'rubocop', and 'yard' gems)
+        "castwide.solargraph",                   // Solargraph - IntelliSense (requires 'solargraph', 'pygments.rb', 'rubocop', and 'yard' gems)
+        "Lourenci.go-to-spec",                   // Go to matching spec of the file you are currently working on
+        "aki77.rails-db-schema",                 // Definition / completion provider for Rails DB schema
+        "aki77.rails-routes",                    // Definition / completion provider for Rails routes
+        "aki77.rails-partial",                   // Definition / completion / code action provider for Rails partials
+        "aki77.rails-i18n",                      // Completion / hover / quickfix provider for Rails i18n
+        "aki77.autocomplete-symbols",            // Completion provider for symbols
+        "aki77.rubocop-quick-fix",               // Quick fix provider for RuboCop offenses
+        "jemmyw.rails-fast-nav"                  // Rails fast navigation
       ]
     }
   }

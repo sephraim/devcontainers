@@ -12,7 +12,7 @@ x-restart_policy: &default_restart_policy
 
 services:
   web:
-    << : *default_restart_policy
+    <<: *default_restart_policy
     build:
       context: ../..
       dockerfile: .devcontainer/docker/Dockerfile
@@ -20,7 +20,6 @@ services:
     container_name: *project_name
     env_file: ../config/.env
     environment:
-      - RAILS_ENV=development
       - SOLARGRAPH_GLOBAL_CONFIG=/app/.devcontainer/config/.solargraph.yml
       - SOLARGRAPH_CACHE=/root/.cache/solargraph
     volumes:
@@ -36,7 +35,7 @@ services:
       - db
 
   delayed_job:
-    << : *default_restart_policy
+    <<: *default_restart_policy
     build:
       context: ../..
       dockerfile: .devcontainer/docker/Dockerfile
@@ -62,7 +61,7 @@ services:
       - postgresql:/var/lib/postgresql/data
       - .:/app
     ports:
-      - '5432:5432'
+      - "5432:5432"
 
   adminer:
     image: adminer

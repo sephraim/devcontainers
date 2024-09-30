@@ -26,10 +26,10 @@ docker compose down
 # rm .env
 
 # Remove application image
-docker image rm MY-COOL-APP
+docker image rm MY-COOL-APP # # TODO: CHANGE THIS TO YOUR APP NAME
 
 # Remove database volume / destroy database
-docker volume rm MY-COOL-APP-postgresql
+docker volume rm MY-COOL-APP-postgresql # TODO: CHANGE THIS TO YOUR APP NAME
 
 cat << MESSAGE
 
