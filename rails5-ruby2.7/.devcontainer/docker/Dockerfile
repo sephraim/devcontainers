@@ -5,7 +5,7 @@ WORKDIR /app
 # Use a bundler version that works for both this version of Ruby and (if applicable) the version of Rails being used
 # NOTE: Bundler v2.4.22 is the last version that works with Ruby 2.7.
 #       RubyGems v3.4.22 is the last version that works with Ruby 2.7.
-#       When Ruby gets upgraded, the version flags can get removed below.
+#       When Ruby gets upgraded, the version flags can be updated below.
 ENV BUNDLER_VERSION=2.4.22
 ARG RUBYGEMS_VERSION=3.4.22
 

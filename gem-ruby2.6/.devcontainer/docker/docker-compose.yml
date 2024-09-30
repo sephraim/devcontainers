@@ -7,7 +7,6 @@ services:
     container_name: *project_name
     env_file: ../config/.env
     environment:
-      - RAILS_ENV=development
       - SOLARGRAPH_GLOBAL_CONFIG=/app/.devcontainer/config/.solargraph.yml
       - SOLARGRAPH_CACHE=/root/.cache/solargraph
     volumes:

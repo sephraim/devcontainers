@@ -4,8 +4,11 @@ WORKDIR /app
 
 # Use a bundler version that works for both this version of Ruby and (if applicable) the version of Rails being used
 # NOTE: The RubyGems version that comes with Ruby 2.6 contains a bug and must be updated to v3.2.3.
-#       Also, Bundler must be pinned to v2.0.0.pre.3 because it is the last version that works with Rails 4.
-#       When Rails gets upgraded, the pinned versions can get updated (or possibly removed) below.
+
+# Use a bundler version that works for both this version of Ruby and (if applicable) the version of Rails being used
+# NOTE: Bundler v2.4.22 is the last version that works with Ruby 2.6.
+#       RubyGems v3.4.22 is the last version that works with Ruby 2.6.
+#       When Ruby gets upgraded, the version flags can be updated below.
 ENV BUNDLER_VERSION=2.4.22
 ARG RUBYGEMS_VERSION=3.2.3
 
