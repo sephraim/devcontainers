@@ -1,13 +1,21 @@
 # STAGE 1: Initial setup
-FROM ruby:2.7.5 as base
+FROM ruby:2.7.7 as base
 WORKDIR /app
 
 # Use a bundler version that works for both this version of Ruby and (if applicable) the version of Rails being used
-# NOTE: Bundler v2.4.22 is the last version that works with Ruby 2.7
+# NOTE: Bundler v2.4.22 is the last version that works with Ruby 2.7.
+#       RubyGems v3.4.22 is the last version that works with Ruby 2.7.
+#       When Ruby gets upgraded, the version flags can get removed below.
 ENV BUNDLER_VERSION=2.4.22
+ARG RUBYGEMS_VERSION=3.4.22
 
 # NOTE: Pinning solargraph version for now because there is a bug with 0.50.0
 ARG SOLARGRAPH_VERSION=0.49.0
+
+# NOTE: debug requires psych, but psych 4+ has major breaking changes for older Ruby / Rails versions
+#       More info at: https://stackoverflow.com/a/71192990/990637
+#       So stick with psych 3.x until Ruby / Rails get updated on this project
+ARG PSYCH_VERSION=3.3.4
 
 # Install missing package(s)
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
@@ -16,9 +24,15 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Prep for gem installation & install gems used for IntelliSense and debugging
-RUN gem install bundler:${BUNDLER_VERSION} \
-    && gem install debug \
-                   pygments.rb \
+# NOTE: You can specify solargraph here (Dockerfile) or in your Gemfile but NOT both,
+#       otherwise IntelliSense will not work.
+# NOTE: If the debug breakpoint console is not working, you may need to remove 'debug' from the list below
+#       and put it in your Gemfile instead.
+RUN gem update --system ${RUBYGEMS_VERSION} \
+    && gem install bundler:${BUNDLER_VERSION} \
+    && gem install pygments.rb \
+                   debug \
+                   psych:${PSYCH_VERSION} \
                    rubocop \
                    solargraph:${SOLARGRAPH_VERSION} \
                    solargraph-rails
@@ -38,7 +52,7 @@ FROM base as final
 COPY --from=gems /usr/local/bundle /usr/local/bundle
 
 # Copy main application files
-COPY Gemfile Gemfile.lock Rakefile config.ru  ./
+COPY Gemfile Gemfile.lock Rakefile config.ru ./
 COPY app app
 COPY bin bin
 COPY config config

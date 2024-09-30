@@ -20,7 +20,6 @@ services:
     container_name: *project_name
     env_file: ../config/.env
     environment:
-      - RAILS_ENV=development
       - SOLARGRAPH_GLOBAL_CONFIG=/app/.devcontainer/config/.solargraph.yml
       - SOLARGRAPH_CACHE=/root/.cache/solargraph
     volumes:
@@ -52,7 +51,7 @@ services:
       - web
 
   db:
-    image: postgres:15
+    image: postgres:16
     container_name: MY-COOL-APP-db # TODO: CHANGE THIS TO YOUR APP NAME
     env_file: ../config/.env
     volumes:

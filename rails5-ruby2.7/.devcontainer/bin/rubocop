@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -eu
+
+# Run Rubocop linter
+docker compose run --no-deps -e RAILS_ENV=test web bundle exec rubocop
