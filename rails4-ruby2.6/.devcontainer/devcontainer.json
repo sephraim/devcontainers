@@ -31,7 +31,7 @@
   // "shutdownAction": "none",
 
   // Uncomment the next line to run commands (on the host machine) before the container is created.
-  "initializeCommand": "docker compose -f .devcontainer/docker/docker-compose.yml build",
+  "initializeCommand": "docker compose -f .devcontainer/docker/docker-compose.yml down && docker compose -f .devcontainer/docker/docker-compose.yml build",
 
   // Uncomment the next line to run commands when the container is created.
   //"onCreateCommand": "",
