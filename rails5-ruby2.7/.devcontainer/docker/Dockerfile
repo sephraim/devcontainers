@@ -17,11 +17,17 @@ ARG SOLARGRAPH_VERSION=0.49.0
 #       So stick with psych 3.x until Ruby / Rails get updated on this project
 ARG PSYCH_VERSION=3.3.4
 
+# Latest gem versions available for Ruby 2.7 as of 2024-09-30
+ARG DEBUG_VERSION=1.9.2
+ARG PYGMENTS_VERSION=3.0.0
+ARG RUBOCOP_VERSION=1.66.1
+ARG SOLARGRAPH_RAILS_VERSION=1.1.0
+
 # Install missing package(s)
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
-    nodejs \
-    wait-for-it \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    nodejs=12.22.12~dfsg-1~deb11u5 \
+    wait-for-it=0.0~git20180723-1 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Prep for gem installation & install gems used for IntelliSense and debugging
 # NOTE: You can specify solargraph here (Dockerfile) or in your Gemfile but NOT both,
@@ -30,20 +36,20 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
 #       and put it in your Gemfile instead.
 RUN gem update --system ${RUBYGEMS_VERSION} \
     && gem install bundler:${BUNDLER_VERSION} \
-    && gem install pygments.rb \
-                   debug \
+    && gem install pygments.rb:${PYGMENTS_VERSION} \
+                   debug:${DEBUG_VERSION} \
                    psych:${PSYCH_VERSION} \
-                   rubocop \
+                   rubocop:${RUBOCOP_VERSION} \
                    solargraph:${SOLARGRAPH_VERSION} \
-                   solargraph-rails
+                   solargraph-rails:${SOLARGRAPH_RAILS_VERSION}
 
 # STAGE 2: Install gems
 # NOTE: Copy *only* the files you absolutely need for this stage, otherwise caching will become useless
 FROM base as gems
 COPY Gemfile Gemfile.lock ./
 COPY vendor vendor
-RUN bundle _${BUNDLER_VERSION}_ update --bundler \
-    && bundle _${BUNDLER_VERSION}_ install
+RUN bundle "_${BUNDLER_VERSION}_" update --bundler \
+    && bundle "_${BUNDLER_VERSION}_" install
 
 # STAGE 3: Copy main app files & cached gemset
 FROM base as final

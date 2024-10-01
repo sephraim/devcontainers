@@ -15,14 +15,20 @@ ARG RUBYGEMS_VERSION=3.2.3
 # NOTE: Pinning solargraph version for now because there is a bug with 0.50.0
 ARG SOLARGRAPH_VERSION=0.49.0
 
+# Latest gem versions available for Ruby 2.6 as of 2024-09-30
+ARG DEBUG_VERSION=1.8.0
+ARG PYGMENTS_VERSION=3.0.0
+ARG RUBOCOP_VERSION=1.50.2
+ARG SOLARGRAPH_RAILS_VERSION=1.1.0
+
 # Prep for gem installation & install gems used for IntelliSense and debugging
 RUN gem update --system ${RUBYGEMS_VERSION} \
     && gem install bundler:${BUNDLER_VERSION} \
-    && gem install debug \
-                   pygments.rb \
-                   rubocop \
+    && gem install pygments.rb:${PYGMENTS_VERSION} \
+                   debug:${DEBUG_VERSION} \
+                   rubocop:${RUBOCOP_VERSION} \
                    solargraph:${SOLARGRAPH_VERSION} \
-                   solargraph-rails
+                   solargraph-rails:${SOLARGRAPH_RAILS_VERSION}
 
 # STAGE 2: Install gems
 # NOTE: Copy *only* the files you absolutely need for this stage, otherwise caching will become useless
@@ -30,8 +36,8 @@ FROM base as gems
 COPY Gemfile Gemfile.lock ../*.gemspec ./
 # TODO: CHANGE path/to/version.rb TO THE ACTUAL PATH OF THE version.rb FILE
 COPY path/to/version.rb path/to/version.rb
-RUN bundle _${BUNDLER_VERSION}_ update --bundler \
-    && bundle _${BUNDLER_VERSION}_ install
+RUN bundle "_${BUNDLER_VERSION}_" update --bundler \
+    && bundle "_${BUNDLER_VERSION}_" install
 
 # STAGE 3: Install your gem & copy over cached gems
 FROM base as final
