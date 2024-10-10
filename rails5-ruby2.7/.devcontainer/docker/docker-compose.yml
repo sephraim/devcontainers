@@ -3,6 +3,9 @@ volumes:
     name: MY-COOL-APP-postgresql # TODO: CHANGE THIS TO YOUR APP NAME
     external: true
 
+# NOTE: Sometimes booting two Rails containers at once (web and delayed_job) causes one or both of them
+#       to fail to boot, likely due to a bootsnap bug (https://github.com/Shopify/bootsnap/issues/353).
+#       This restart policy will restart the container(s) if such a failure occurs.
 x-restart_policy: &default_restart_policy
   deploy:
     restart_policy:
