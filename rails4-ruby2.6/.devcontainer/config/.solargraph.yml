@@ -1,3 +1,6 @@
+# Configuration file for the Solargraph Ruby language server.
+# Sets up code completion, analysis, and linting for this project.
+# Adds support for Ruby and Ruby on Rails IDE IntelliSense features.
 ---
 include:
   - "**/*.rb"
